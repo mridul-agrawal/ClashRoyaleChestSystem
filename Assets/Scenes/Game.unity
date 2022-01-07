@@ -891,11 +891,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2105425951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ce0f3a9dba7cba41ae518ae066b82c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2371b5e107fa53846b8613a76cb7e01d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coins: 0
-  gems: 0
+  valueOfGems: {fileID: 1116134853}
+  valueOfCoins: {fileID: 1531428915}
 --- !u!114 &2105425954
 MonoBehaviour:
   m_ObjectHideFlags: 0
