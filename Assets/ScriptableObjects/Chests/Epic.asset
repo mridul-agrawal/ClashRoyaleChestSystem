@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41821d06744a6c540ad33143529df01e, type: 3}
   m_Name: Epic
   m_EditorClassIdentifier: 
-  ChestName: 
-  UnlockDuration: 0
-  MinCoins: 0
-  MaxCoins: 0
-  MinGems: 0
-  MaxGems: 0
+  ChestName: Epic Chest
+  ChestSprite: {fileID: 21300000, guid: 9716ae6e42bc910479e599cd20277c75, type: 3}
+  UnlockDuration: 60
+  MinCoins: 600
+  MaxCoins: 800
+  MinGems: 45
+  MaxGems: 60

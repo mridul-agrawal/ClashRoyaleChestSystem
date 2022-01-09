@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41821d06744a6c540ad33143529df01e, type: 3}
   m_Name: Legendary
   m_EditorClassIdentifier: 
-  ChestName: 
-  UnlockDuration: 0
-  MinCoins: 0
-  MaxCoins: 0
-  MinGems: 0
-  MaxGems: 0
+  ChestName: Legendary Chest
+  ChestSprite: {fileID: 21300000, guid: e13cf9dd6bbc4324791c5089029a90d6, type: 3}
+  UnlockDuration: 120
+  MinCoins: 1000
+  MaxCoins: 1200
+  MinGems: 80
+  MaxGems: 100

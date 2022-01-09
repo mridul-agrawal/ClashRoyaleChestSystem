@@ -12,3 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2378c045c141174892e056e45233a2a, type: 3}
   m_Name: ChestConfigSO
   m_EditorClassIdentifier: 
+  ChestConfigurationMap:
+  - ChestType: 1
+    ChestSO: {fileID: 11400000, guid: e2378d0962b8bdf40a154890a41004a3, type: 2}
+  - ChestType: 2
+    ChestSO: {fileID: 11400000, guid: 4576b2c80b373864b96e9d899228743e, type: 2}
+  - ChestType: 3
+    ChestSO: {fileID: 11400000, guid: eb24740ba80ceca44aa0bee2858298f6, type: 2}
+  - ChestType: 4
+    ChestSO: {fileID: 11400000, guid: ce464a2e75c60294d867a03c67851f11, type: 2}

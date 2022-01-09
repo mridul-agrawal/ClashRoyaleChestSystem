@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41821d06744a6c540ad33143529df01e, type: 3}
   m_Name: Rare
   m_EditorClassIdentifier: 
-  ChestName: 
-  UnlockDuration: 0
-  MinCoins: 0
-  MaxCoins: 0
-  MinGems: 0
-  MaxGems: 0
+  ChestName: Rare Chest
+  ChestSprite: {fileID: 21300000, guid: 31cbff8256ad9a84d8ba7d49480aee3e, type: 3}
+  UnlockDuration: 30
+  MinCoins: 300
+  MaxCoins: 500
+  MinGems: 20
+  MaxGems: 40
