@@ -10,6 +10,8 @@ public class ChestSlotsController : SingletonGeneric<ChestSlotsController>
     private Slot[] Slots;
     [SerializeField]
     private ChestConfigs chestConfiguration;
+    [SerializeField]
+    private GameObject slotsFullPopup;
 
 
     public void SpawnRandomChest()
@@ -17,11 +19,16 @@ public class ChestSlotsController : SingletonGeneric<ChestSlotsController>
         int slot = GetEmptySlot();
         if(slot == -1)
         {
-            Debug.Log("No Slot Available");
+            ShowSlotsFullPopup(true);
         } else
         {
             SpawnChestInSlot(Slots[slot]);
         }
+    }
+
+    public void ShowSlotsFullPopup(bool setActive)
+    {
+        slotsFullPopup.SetActive(setActive);
     }
 
     private void SpawnChestInSlot(Slot slot)
