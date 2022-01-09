@@ -6,4 +6,10 @@ public class Slot : MonoBehaviour
 {
     public bool isEmpty;
     public ChestController chestController;
+
+    private void Start()
+    {
+        isEmpty = true;
+    }
+
 }
