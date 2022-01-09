@@ -6,6 +6,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ChestConfigSO", menuName = "ScriptableObjects/Chests/ChestConfigurations")]
 public class ChestConfigs : ScriptableObject
 {
+    /*[Serializable]
+    public Dictionary<ChestType, ChestScriptableObject> ChestConfigurationMap;*/
+
+
     [Serializable]
     public class ChestConfigPair
     {
@@ -14,4 +18,5 @@ public class ChestConfigs : ScriptableObject
     }
 
     public ChestConfigPair[] ChestConfigurationMap;
+
 }
