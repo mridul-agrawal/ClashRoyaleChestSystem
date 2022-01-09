@@ -13,18 +13,15 @@ public class ResourceHandler : SingletonGeneric<ResourceHandler>
     {
         return coins;
     }
-
     public int GetGems()
     {
         return gems;
     }
-
     public void IncreaseGems(int valueToIncrease)
     {
         gems += valueToIncrease;
         UIHandler.Instance.UpdateGemsUI(gems);
     }
-
     public void DecreaseGems(int valueToDecrease)
     {
         gems -= valueToDecrease;
@@ -40,5 +37,7 @@ public class ResourceHandler : SingletonGeneric<ResourceHandler>
         coins -= valueToDecrease;
         UIHandler.Instance.UpdateCoinsUI(coins);
     }
+
+
 
 }
