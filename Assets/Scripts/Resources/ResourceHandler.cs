@@ -9,6 +9,14 @@ public class ResourceHandler : SingletonGeneric<ResourceHandler>
     [SerializeField]
     private int gems;
 
+    private void Start()
+    {
+        coins = 200;
+        gems = 50;
+        UIHandler.Instance.UpdateGemsUI(gems);
+        UIHandler.Instance.UpdateCoinsUI(coins);
+    }
+
     public int GetCoins()
     {
         return coins;

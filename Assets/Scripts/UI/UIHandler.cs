@@ -17,6 +17,9 @@ public class UIHandler : SingletonGeneric<UIHandler>
     private Text GemCostButtonText;
     [SerializeField]
     private GameObject slotsFullPopup;
+    private Slot selectedSlot;
+    [SerializeField]
+    private Sprite EmptySlotSprite;
 
 
     public void UpdateGemsUI(int gems)
@@ -34,16 +37,51 @@ public class UIHandler : SingletonGeneric<UIHandler>
         slotsFullPopup.SetActive(setActive);
     }
 
-    public void InitialiseUnlockPopup(int coinCost, int gemCost)
+    public void InitialiseUnlockPopup(Slot newSlot)
     {
+        selectedSlot = newSlot;
         ToggleChestUnlockPopup(true);
-        CoinCostButtonText.text = coinCost.ToString();
-        GemCostButtonText.text = gemCost.ToString();
+        CoinCostButtonText.text = selectedSlot.chestController.GetCoinCost().ToString() + " Coins";
+        GemCostButtonText.text = selectedSlot.chestController.GetGemsCost().ToString() + " Gems";
     }
 
     public void ToggleChestUnlockPopup(bool active)
     {
+        if(!active)
+        {
+            selectedSlot = null;
+        }
         chestUnlockPopup.SetActive(active);
+    }
+
+    public void ToggleSlotButton(Button slotButton, bool active)
+    {
+        slotButton.enabled = active;
+    }
+
+    public void OnPressUnlockWithCoins()
+    {
+        bool UnlockSuccess = selectedSlot.chestController.UnlockChestWithCoins();
+        if(UnlockSuccess)
+        {
+            selectedSlot.GetComponent<Image>().sprite = EmptySlotSprite;
+            ToggleSlotButton(selectedSlot.GetComponent<Button>(), false);
+            selectedSlot.isEmpty = true;
+            ToggleChestUnlockPopup(false);
+        }
+
+    }
+
+    public void OnPressUnlockWithGems()
+    {
+        bool UnlockSuccess = selectedSlot.chestController.UnlockChestWithGems();
+        if (UnlockSuccess)
+        {
+            selectedSlot.GetComponent<Image>().sprite = EmptySlotSprite;
+            ToggleSlotButton(selectedSlot.GetComponent<Button>(), false);
+            selectedSlot.isEmpty = true;
+            ToggleChestUnlockPopup(false);
+        }
     }
 
 }

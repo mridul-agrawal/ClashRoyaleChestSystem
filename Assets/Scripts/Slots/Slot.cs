@@ -8,11 +8,13 @@ public class Slot : MonoBehaviour
 {
     public bool isEmpty;
     public ChestController chestController;
+    private Button slotButton;
 
     private void Start()
     {
         isEmpty = true;
-        ToggleSlotButton(false);
+        slotButton = GetComponent<Button>();
+        UIHandler.Instance.ToggleSlotButton(slotButton, false);
     }
 
     public void AssignNewChestController(ChestController controller)
@@ -20,7 +22,7 @@ public class Slot : MonoBehaviour
         isEmpty = false;
         chestController = controller;
         GetComponent<Image>().sprite = chestController.chestModel.ChestSprite;
-        ToggleSlotButton(true);
+        UIHandler.Instance.ToggleSlotButton(slotButton, true);
     }
 
     public void OnSlotClickLogic()
@@ -30,8 +32,8 @@ public class Slot : MonoBehaviour
         if(chestController.chestState == ChestState.Locked)
         {
             Debug.Log("Locked");
-            UIHandler.Instance.InitialiseUnlockPopup(chestController.GetCoinCost(), chestController.GetGemsCost());
-            ToggleSlotButton(false);
+            UIHandler.Instance.InitialiseUnlockPopup(this);
+            // UIHandler.Instance.ToggleSlotButton(slotButton, false);
             // Show a Popup with Unlocking Options.
         } 
         else if(chestController.chestState == ChestState.Unlocking)
@@ -47,9 +49,5 @@ public class Slot : MonoBehaviour
 
     }
 
-    public void ToggleSlotButton(bool active)
-    {
-        GetComponent<Button>().enabled = active;
-    }
 
 }
