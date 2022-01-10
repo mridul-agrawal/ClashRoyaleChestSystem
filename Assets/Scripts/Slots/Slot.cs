@@ -12,4 +12,15 @@ public class Slot : MonoBehaviour
         isEmpty = true;
     }
 
+    public void OnSlotClickLogic()
+    {
+        if(chestController == null)
+        {
+            return;
+        }
+
+        Debug.Log("Chest Clicked");
+
+    }
+
 }
