@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,8 @@ public class Slot : MonoBehaviour
         if(chestController.chestState == ChestState.Locked)
         {
             Debug.Log("Locked");
+            UIHandler.Instance.InitialiseUnlockPopup(chestController.GetCoinCost(), chestController.GetGemsCost());
+            ToggleSlotButton(false);
             // Show a Popup with Unlocking Options.
         } 
         else if(chestController.chestState == ChestState.Unlocking)

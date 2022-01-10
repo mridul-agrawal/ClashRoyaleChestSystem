@@ -10,25 +10,17 @@ public class ChestSlotsController : SingletonGeneric<ChestSlotsController>
     private Slot[] Slots;
     [SerializeField]
     private ChestConfigs chestConfiguration;
-    [SerializeField]
-    private GameObject slotsFullPopup;
-
 
     public void SpawnRandomChest()
     {
         int slot = GetEmptySlot();
         if(slot == -1)
         {
-            ShowSlotsFullPopup(true);
+            UIHandler.Instance.ShowSlotsFullPopup(true);
         } else
         {
             SpawnChestInSlot(Slots[slot]);
         }
-    }
-
-    public void ShowSlotsFullPopup(bool setActive)
-    {
-        slotsFullPopup.SetActive(setActive);
     }
 
     private void SpawnChestInSlot(Slot slot)

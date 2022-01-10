@@ -17,4 +17,14 @@ public class ChestController
         chestState = newState;
     }
 
+    public int GetCoinCost()
+    {
+        return 50;
+    }
+
+    public int GetGemsCost()
+    {
+        return 5;
+    }
+
 }
