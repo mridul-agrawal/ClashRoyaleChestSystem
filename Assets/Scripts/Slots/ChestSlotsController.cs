@@ -34,9 +34,8 @@ public class ChestSlotsController : SingletonGeneric<ChestSlotsController>
     private void SpawnChestInSlot(Slot slot)
     {
         ChestScriptableObject randomChestSO = chestConfiguration.ChestConfigurationMap[Random.Range(0, 4)].ChestSO;
-        slot.isEmpty = false;
-        slot.chestController = ChestService.Instance.GetChest(randomChestSO);
-        slot.GetComponent<Image>().sprite = slot.chestController.chestModel.ChestSprite;
+        ChestController chestController = ChestService.Instance.GetChest(randomChestSO);
+        slot.AssignNewChestController(chestController);
     }
 
     private int GetEmptySlot()
