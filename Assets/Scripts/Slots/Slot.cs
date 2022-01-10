@@ -14,12 +14,20 @@ public class Slot : MonoBehaviour
 
     public void OnSlotClickLogic()
     {
-        if(chestController == null)
-        {
-            return;
-        }
+        if(chestController == null) return;
 
-        Debug.Log("Chest Clicked");
+        if(chestController.chestState == ChestState.Locked)
+        {
+            // Show a Popup with Unlocking Options.
+        } 
+        else if(chestController.chestState == ChestState.Unlocking)
+        {
+            // Button should be disabled in this condition.
+        } 
+        else if(chestController.chestState == ChestState.Unlocked)
+        {
+            // Open the chest and increase resources accordingly.
+        }
 
     }
 

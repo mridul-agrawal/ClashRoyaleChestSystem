@@ -5,8 +5,10 @@ using UnityEngine;
 public class ChestController 
 {
     public ChestModel chestModel;
+    public ChestState chestState
     public ChestController(ChestModel chestModel)
     {
         this.chestModel = chestModel;
+        chestState = ChestState.Locked;
     }
 }
