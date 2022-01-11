@@ -16,7 +16,7 @@ public class ChestSlotsController : SingletonGeneric<ChestSlotsController>
         int slot = GetEmptySlot();
         if(slot == -1)
         {
-            UIHandler.Instance.ShowSlotsFullPopup(true);
+            UIHandler.Instance.ToggleSlotsFullPopup(true);
         } else
         {
             SpawnChestInSlot(Slots[slot]);

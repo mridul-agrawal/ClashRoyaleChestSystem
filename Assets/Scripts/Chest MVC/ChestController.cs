@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class ChestController 
@@ -67,11 +68,15 @@ public class ChestController
         }
     }
 
-    public async void StartTimer()
+    public async void StartTimer(CancellationToken token)
     {
         float duration = chestModel.UnlockDuration;
         while(duration > 0)
         {
+            if(token.IsCancellationRequested)
+            {
+                return;
+            }
             UIHandler.Instance.UpdateTimerUI(duration);
             await new WaitForSeconds(1f);
             duration -= 1;

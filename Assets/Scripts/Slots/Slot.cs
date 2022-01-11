@@ -41,6 +41,7 @@ public class Slot : MonoBehaviour
         else if(chestController.chestState == ChestState.Unlocking)
         {
             Debug.Log("Unlocking");
+            UIHandler.Instance.ToggleUnlockNowPopup(true);
             // Button should be disabled in this condition.
         } 
         else if(chestController.chestState == ChestState.Unlocked)
