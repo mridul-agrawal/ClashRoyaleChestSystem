@@ -24,6 +24,8 @@ public class UIHandler : SingletonGeneric<UIHandler>
     private Sprite EmptySlotSprite;
     [SerializeField]
     private GameObject UnlockNowPopup;
+    [SerializeField]
+    private Text UnlockNowText;
     private CancellationTokenSource tokenSource = null;
 
 
@@ -68,6 +70,10 @@ public class UIHandler : SingletonGeneric<UIHandler>
 
     public void ToggleUnlockNowPopup(bool active)
     {
+        if(active)
+        {
+            UnlockNowText.text = selectedSlot.chestController.GetGemsCost().ToString() + " Gems";
+        }
         UnlockNowPopup.SetActive(active);
     }
 
@@ -94,14 +100,23 @@ public class UIHandler : SingletonGeneric<UIHandler>
         bool UnlockSuccess = selectedSlot.chestController.UnlockChestWithGems();
         if (UnlockSuccess)
         {
-            StartUnlocking();
+            selectedSlot.chestController.ChangeChestState(ChestState.Unlocked);
+            selectedSlot.TimerUIText.text = "Open Chest!";
+            ToggleTimerUI(selectedSlot.TimerUIText.gameObject, true);
+            chestUnlockPopup.SetActive(false);
+            Debug.Log(selectedSlot.TimerUIText.text);
         }
     }
 
     public void OnPressedUnlockNow()
     {
-        StopTimer();
-        UnlockChest();
+        bool UnlockSuccess = selectedSlot.chestController.UnlockChestWithGems();
+        if (UnlockSuccess)
+        {
+            StopTimer();
+            UnlockChest();
+        }
+        
     }
 
     private void StartUnlocking()
@@ -134,6 +149,7 @@ public class UIHandler : SingletonGeneric<UIHandler>
         ToggleSlotButton(selectedSlot.GetComponent<Button>(), false);
         selectedSlot.isEmpty = true;
         ToggleTimerUI(selectedSlot.TimerUIText.gameObject, false);
+        selectedSlot.chestController.CollectRewards();
         ToggleChestUnlockPopup(false);
     }
 

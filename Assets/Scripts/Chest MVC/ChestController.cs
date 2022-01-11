@@ -9,13 +9,18 @@ public class ChestController
     public ChestState chestState;
     private int coinCost;
     private int gemCost;
+    private int coinReward;
+    private int gemReward;
+    private float TimeLeft;
 
     public ChestController(ChestModel chestModel)
     {
         this.chestModel = chestModel;
         ChangeChestState(ChestState.Locked);
+        TimeLeft = chestModel.UnlockDuration;
         SetCoinCost();
         SetGemCost();
+        SetReward();
     }
 
     public void ChangeChestState(ChestState newState)
@@ -25,22 +30,30 @@ public class ChestController
 
     public int GetCoinCost()
     {
+        SetCoinCost();
         return coinCost;
     }
 
     public int GetGemsCost()
     {
+        SetGemCost();
         return gemCost;
+    }
+
+    private void SetReward()
+    {
+        coinReward = Random.Range(chestModel.MinCoins, chestModel.MaxCoins + 1);
+        gemReward = Random.Range(chestModel.MinGems, chestModel.MaxGems + 1);
     }
 
     private void SetCoinCost()
     {
-        coinCost = 50;
+        coinCost = chestModel.UnlockCost;
     }
 
     private void SetGemCost()
     {
-        gemCost = 5;
+        gemCost = (int)Mathf.Ceil(TimeLeft / 2);
     }
 
     public bool UnlockChestWithCoins()
@@ -57,6 +70,7 @@ public class ChestController
 
     public bool UnlockChestWithGems()
     {
+        SetGemCost();
         if (ResourceHandler.Instance.GetGems() >= gemCost)
         {
             ResourceHandler.Instance.DecreaseGems(gemCost);
@@ -70,19 +84,24 @@ public class ChestController
 
     public async void StartTimer(CancellationToken token)
     {
-        float duration = chestModel.UnlockDuration;
-        while(duration > 0)
+        while(TimeLeft > 0)
         {
             if(token.IsCancellationRequested)
             {
                 return;
             }
-            UIHandler.Instance.UpdateTimerUI(duration);
+            UIHandler.Instance.UpdateTimerUI(TimeLeft);
             await new WaitForSeconds(1f);
-            duration -= 1;
+            TimeLeft -= 1;
         }
         UIHandler.Instance.UnlockChest();
         return;
+    }
+
+    public void CollectRewards()
+    {
+        ResourceHandler.Instance.IncreaseCoins(coinReward);
+        ResourceHandler.instance.IncreaseGems(gemReward);
     }
 
 
