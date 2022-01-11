@@ -14,4 +14,5 @@ public class ChestScriptableObject : ScriptableObject
     public int MaxCoins;
     public int MinGems;
     public int MaxGems;
+    public int UnlockCost;
 }

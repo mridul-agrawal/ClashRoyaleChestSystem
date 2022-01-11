@@ -13,6 +13,7 @@ public class ChestModel
         MaxCoins = ChestSO.MaxCoins;
         MinGems = ChestSO.MinGems;
         MaxGems = ChestSO.MaxGems;
+        UnlockCost = ChestSO.UnlockCost;
     }
 
     public float UnlockDuration { get; }
@@ -22,4 +23,5 @@ public class ChestModel
     public Sprite ChestSprite { get; }
     public int MinGems { get; }
     public int MaxGems { get; }
+    public int UnlockCost { get; }
 }
