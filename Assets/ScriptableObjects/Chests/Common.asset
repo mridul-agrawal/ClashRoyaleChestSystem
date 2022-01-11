@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChestName: Common Chest
   ChestSprite: {fileID: 21300000, guid: 4ad27386ab6273a41bfa7ccfbdb81d81, type: 3}
-  UnlockDuration: 15
+  UnlockDuration: 3
   MinCoins: 100
   MaxCoins: 200
   MinGems: 10
   MaxGems: 20
+  UnlockCost: 50

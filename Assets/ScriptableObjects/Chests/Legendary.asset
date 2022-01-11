@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChestName: Legendary Chest
   ChestSprite: {fileID: 21300000, guid: e13cf9dd6bbc4324791c5089029a90d6, type: 3}
-  UnlockDuration: 120
+  UnlockDuration: 20
   MinCoins: 1000
   MaxCoins: 1200
   MinGems: 80
   MaxGems: 100
+  UnlockCost: 500

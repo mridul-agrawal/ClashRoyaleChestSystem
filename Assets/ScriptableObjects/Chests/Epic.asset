@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChestName: Epic Chest
   ChestSprite: {fileID: 21300000, guid: 9716ae6e42bc910479e599cd20277c75, type: 3}
-  UnlockDuration: 60
+  UnlockDuration: 10
   MinCoins: 600
   MaxCoins: 800
   MinGems: 45
   MaxGems: 60
+  UnlockCost: 250
