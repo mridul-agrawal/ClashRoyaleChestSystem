@@ -46,6 +46,7 @@ public class Slot : MonoBehaviour
         else if(chestController.chestState == ChestState.Unlocked)
         {
             Debug.Log("Unlocked");
+            UIHandler.Instance.OpenChest();
             // Open the chest and increase resources accordingly.
         }
 

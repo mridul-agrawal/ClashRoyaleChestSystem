@@ -99,7 +99,8 @@ public class UIHandler : SingletonGeneric<UIHandler>
 
     public void UnlockChest()
     {
-
+        selectedSlot.chestController.ChangeChestState(ChestState.Unlocked);
+        selectedSlot.TimerUIText.text = "Open Chest!";
     }
 
     public void OpenChest()
@@ -107,6 +108,7 @@ public class UIHandler : SingletonGeneric<UIHandler>
         selectedSlot.GetComponent<Image>().sprite = EmptySlotSprite;
         ToggleSlotButton(selectedSlot.GetComponent<Button>(), false);
         selectedSlot.isEmpty = true;
+        ToggleTimerUI(selectedSlot.TimerUIText.gameObject, false);
         ToggleChestUnlockPopup(false);
     }
 
