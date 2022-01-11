@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -59,15 +60,17 @@ public class UIHandler : SingletonGeneric<UIHandler>
         slotButton.enabled = active;
     }
 
+    public void ToggleTimerUI(GameObject TimerUI, bool active)
+    {
+        TimerUI.SetActive(active);
+    }
+
     public void OnPressUnlockWithCoins()
     {
         bool UnlockSuccess = selectedSlot.chestController.UnlockChestWithCoins();
         if(UnlockSuccess)
         {
-            selectedSlot.GetComponent<Image>().sprite = EmptySlotSprite;
-            ToggleSlotButton(selectedSlot.GetComponent<Button>(), false);
-            selectedSlot.isEmpty = true;
-            ToggleChestUnlockPopup(false);
+            StartUnlocking();
         }
 
     }
@@ -77,11 +80,34 @@ public class UIHandler : SingletonGeneric<UIHandler>
         bool UnlockSuccess = selectedSlot.chestController.UnlockChestWithGems();
         if (UnlockSuccess)
         {
-            selectedSlot.GetComponent<Image>().sprite = EmptySlotSprite;
-            ToggleSlotButton(selectedSlot.GetComponent<Button>(), false);
-            selectedSlot.isEmpty = true;
-            ToggleChestUnlockPopup(false);
+            StartUnlocking();
         }
+    }
+
+    private void StartUnlocking()
+    {
+        selectedSlot.chestController.chestState = ChestState.Unlocking;
+        ToggleTimerUI(selectedSlot.TimerUIText.gameObject, true);
+        selectedSlot.chestController.StartTimer();
+        chestUnlockPopup.SetActive(false);
+    }
+
+    public void UpdateTimerUI(float TimeLeft)
+    {
+        selectedSlot.TimerUIText.text = Mathf.Ceil(TimeLeft).ToString() + " sec";
+    }
+
+    public void UnlockChest()
+    {
+
+    }
+
+    public void OpenChest()
+    {
+        selectedSlot.GetComponent<Image>().sprite = EmptySlotSprite;
+        ToggleSlotButton(selectedSlot.GetComponent<Button>(), false);
+        selectedSlot.isEmpty = true;
+        ToggleChestUnlockPopup(false);
     }
 
 }

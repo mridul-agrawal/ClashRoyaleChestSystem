@@ -67,5 +67,18 @@ public class ChestController
         }
     }
 
+    public async void StartTimer()
+    {
+        float duration = chestModel.UnlockDuration;
+        while(duration > 0)
+        {
+            UIHandler.Instance.UpdateTimerUI(duration);
+            await new WaitForSeconds(1f);
+            duration -= 1;
+        }
+        UIHandler.Instance.UnlockChest();
+        return;
+    }
+
 
 }

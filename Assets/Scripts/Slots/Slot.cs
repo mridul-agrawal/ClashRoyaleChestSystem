@@ -9,6 +9,8 @@ public class Slot : MonoBehaviour
     public bool isEmpty;
     public ChestController chestController;
     private Button slotButton;
+    public Text TimerUIText;
+
 
     private void Start()
     {
