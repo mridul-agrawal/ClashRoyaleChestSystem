@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2378c045c141174892e056e45233a2a, type: 3}
+  m_Script: {fileID: 11500000, guid: 036e8063702287f449c0ec6214533e52, type: 3}
   m_Name: ChestConfigSO
   m_EditorClassIdentifier: 
   ChestConfigurationMap:

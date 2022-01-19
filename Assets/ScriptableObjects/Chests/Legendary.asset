@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41821d06744a6c540ad33143529df01e, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d7e5797b9fd4a34eae2781ea2fa8b6b, type: 3}
   m_Name: Legendary
   m_EditorClassIdentifier: 
-  ChestName: Legendary Chest
+  ChestName: Legendary
   ChestSprite: {fileID: 21300000, guid: e13cf9dd6bbc4324791c5089029a90d6, type: 3}
-  UnlockDuration: 20
-  MinCoins: 1000
-  MaxCoins: 1200
-  MinGems: 80
-  MaxGems: 100
-  UnlockCost: 500
+  UnlockDuration: 15
+  MinCoins: 600
+  MaxCoins: 1000
+  MinGems: 60
+  MaxGems: 120
+  UnlockCost: 250
